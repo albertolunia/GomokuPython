@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+service Gomoku {
+    rpc Jogar (JogadaRequest) returns (JogadaResponse);
+    rpc VerificarVencedor (Vazio) returns (VencedorResponse);
+    rpc GetTabuleiro (Vazio) returns (TabuleiroResponse);
+}
+
+message JogadaRequest {
+    int32 linha = 1;
+    int32 coluna = 2;
+    string jogador = 3;
+}
+
+message JogadaResponse {
+    bool sucesso = 1;
+}
+
+message VencedorResponse {
+    string vencedor = 1;
+}
+
+message TabuleiroResponse {
+    repeated string linhas = 1;
+}
+
+message Vazio {}
