@@ -38,10 +38,14 @@ def run():
             else:
                 print("Jogada inválida. Tente novamente.")
 
-            vencedor_response = stub.VerificarVencedor(gomoku_pb2.Vazio())
-            if vencedor_response.vencedor:
-                print_tabuleiro(stub)  # Exibe o tabuleiro no final
-                print(f"O vencedor é: {vencedor_response.vencedor}")
+            try:
+                vencedor_response = stub.VerificarVencedor(gomoku_pb2.Vazio())
+                if vencedor_response.vencedor:
+                    print_tabuleiro(stub)  # Exibe o tabuleiro no final
+                    print(f"O vencedor é: {vencedor_response.vencedor}")
+                    break
+            except:
+                print("Jogo Encerrado, verifique o ganhar na tela do servidor.")
                 break
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 class Gomoku:
-    TAMANHO_TABULEIRO = 2
-    PONTOS_GANHAR = 1
+    TAMANHO_TABULEIRO = 15
+    PONTOS_GANHAR = 4
 
     def __init__(self):
         self.tabuleiro = self.inicia_tabuleiro()

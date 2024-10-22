@@ -35,15 +35,21 @@ def run():
 
             response = stub.Jogar(gomoku_pb2.JogadaRequest(linha=linha, coluna=coluna, jogador=jogador))
             if response.sucesso:
-                print("Jogada realizada com sucesso!")
+                print("\nJogada realizada com sucesso!")
             else:
-                print("Jogada inválida. Tente novamente.")
+                print("\nJogada inválida. Tente novamente.")
 
-            vencedor_response = stub.VerificarVencedor(gomoku_pb2.Vazio())
-            if vencedor_response.vencedor:
-                print_tabuleiro(stub)  # Exibe o tabuleiro no final
-                print(f"O vencedor é: {vencedor_response.vencedor}")
+            
+            try:
+                vencedor_response = stub.VerificarVencedor(gomoku_pb2.Vazio())
+                if vencedor_response.vencedor:
+                    print_tabuleiro(stub)  # Exibe o tabuleiro no final
+                    print(f"\nO vencedor é: {vencedor_response.vencedor}")
+                    break
+            except:
+                print("\nJogo Encerrado, verifique o ganhar na tela do servidor.")
                 break
+
 
 if __name__ == "__main__":
     run()
