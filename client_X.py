@@ -22,7 +22,7 @@ def print_tabuleiro(stub):
 
 
 def run():
-    with grpc.insecure_channel('192.168.0.6:50051') as channel:
+    with grpc.insecure_channel('172.26.2.183:50051') as channel:
         stub = gomoku_pb2_grpc.GomokuStub(channel)
 
         jogador = 'X'
